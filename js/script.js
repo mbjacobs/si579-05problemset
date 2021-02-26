@@ -1,4 +1,4 @@
-import {INTEREST_CATEGORIES} from './fb_interest_categories.js';
+// import {INTEREST_CATEGORIES} from './fb_interest_categories.js';
 
 //Note: I understand that best practice would be to place this data structure 
 //in another separate JS file and export it. I ran into a CORS error with that 
@@ -1193,7 +1193,7 @@ const identity_relevancy_btn = document.querySelector("#identity_relevancy_btn")
 const irrelevancy_btn = document.querySelector("#irrelevancy_btn");
 const randomize_btn = document.querySelector("#randomize_btn");
 
-window.addEventListener('load', populateInterests(INTEREST_CATEGORIES)); 
+window.addEventListener('load', populateInterests(interest_categories)); 
 life_relevancy_btn.addEventListener('click', function () {filterByRelevancy('life_relevancy')});
 identity_relevancy_btn.addEventListener('click', function () {filterByRelevancy('identity_relevancy')});
 irrelevancy_btn.addEventListener('click', filterByIrrelevancy);
@@ -1217,7 +1217,7 @@ function populateInterests (interests) {
 
 function filterByRelevancy (relevancy_type) {
     const interestList =  document.querySelector("#interest-container").childNodes;
-    relevancy_subset  = _.filter(INTEREST_CATEGORIES, [relevancy_type, true]);
+    relevancy_subset  = _.filter(interest_categories, [relevancy_type, true]);
     
     _.forEach(interestList, function (interest) {
         $(interest).css('background-color', 'grey');
@@ -1231,7 +1231,7 @@ function filterByRelevancy (relevancy_type) {
 
 function filterByIrrelevancy () {
     const interestList =  document.querySelector("#interest-container").childNodes;
-    irrelevancy_subset  = _.filter(INTEREST_CATEGORIES, { 'life_relevancy': false, 'identity_relevancy': false });    
+    irrelevancy_subset  = _.filter(interest_categories, { 'life_relevancy': false, 'identity_relevancy': false });    
 
     _.forEach(interestList, function (interest) {
         $(interest).css('background-color', 'grey');
